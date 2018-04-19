@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+
+    android:orientation="vertical"
+    android:layout_width="match_parent"
+    android:background="#fff"
+    android:layout_height="match_parent"
+    >
+
+    <LinearLayout
+
+        android:layout_width="match_parent"
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+        <!--toolbar-->
+        <RelativeLayout
+            android:id="@+id/slide_toolbar"
+            android:background="#fff"
+            android:layout_width="match_parent"
+            android:layout_height="?attr/actionBarSize"
+            >
+         <ImageButton
+             android:background="@null"
+             android:id="@+id/slide_close"
+             android:src="@drawable/close"
+
+             android:layout_width="wrap_content"
+             android:layout_height="wrap_content"
+             android:layout_marginLeft="5dp"
+             />
+            <ImageButton
+                android:id="@+id/slide_notification"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:src="@drawable/account"
+                android:layout_alignParentRight="true"
+                />
+            
+        </RelativeLayout>
+   <!--登录头像-->
+   <RelativeLayout
+       android:id="@+id/user_login"
+       android:layout_width="match_parent"
+       android:layout_marginBottom="30dp"
+       android:layout_height="wrap_content">
+       <ImageView
+           android:id="@+id/user_avatar"
+           android:layout_width="wrap_content"
+         android:layout_centerHorizontal="true"
+           android:src="@drawable/touxiang"
+           android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/tv_login"
+                android:layout_width="wrap_content"
+                android:layout_below="@id/user_avatar"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="10dp"
+                android:textSize="18sp"
+                android:textColor="#000"
+                android:layout_centerHorizontal="true"
+                android:text="登录/注册"
+                />
+
+   </RelativeLayout>
+
+
+
+
+    </LinearLayout>
+
+
+
+   <!-- 用户信息-->
+    <RelativeLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="15dp"
+        android:layout_marginRight="15dp"
+        >
+   <View
+       android:layout_width="match_parent"
+       android:layout_height="1dp"
+       android:background="#e3e3e3"
+       />
+
+        <!-- 余额-->
+      <TextView
+          android:id="@+id/tv_yue"
+          android:layout_width="wrap_content"
+          android:layout_height="wrap_content"
+          android:text="余额(元)"
+          android:textSize="15sp"
+            android:layout_marginTop="40dp"
+          android:layout_marginLeft="15dp"
+          android:textColor="#000"
+          />
+    <TextView
+        android:id="@+id/tv_account_money"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="--"
+        android:layout_marginTop="10dp"
+        android:layout_marginLeft="17dp"
+        android:textColor="#000"
+        android:textSize="19sp"
+        android:layout_marginBottom="15dp"
+        android:layout_below="@id/tv_yue"
+        />
+
+        <TextView
+            android:id="@+id/now_chongzhi"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="立即充值 >>"
+            android:textColor="#fff"
+            android:background="#000"
+            android:paddingTop="8dp"
+            android:paddingRight="20dp"
+            android:paddingLeft="20dp"
+            android:paddingBottom="8dp"
+            android:layout_marginTop="42dp"
+            android:layout_alignParentRight="true"
+           />
+
+    </RelativeLayout>
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:background="#e3e3e3"
+        android:layout_marginLeft="15dp"
+        />
+
+ <ScrollView
+     android:layout_width="match_parent"
+     android:layout_height="wrap_content">
+     <LinearLayout
+         android:layout_width="match_parent"
+         android:layout_height="wrap_content"
+         android:orientation="vertical"
+         android:layout_marginTop="10dp"
+         android:layout_marginRight="15dp"
+         android:layout_marginLeft="15dp"
+         >
+
+         <LinearLayout
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+             <ImageView
+                 android:layout_gravity="center"
+                 android:src="@drawable/account"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="订单管理"
+                 android:layout_marginLeft="10dp"
+                 android:textColor="#000"
+                 android:textSize="17sp"
+                 />
+         </LinearLayout>
+
+         <LinearLayout
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+             <ImageView
+                 android:layout_gravity="center"
+                 android:src="@drawable/account"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="邀请有奖"
+                 android:layout_marginLeft="10dp"
+                 android:textColor="#000"
+                 android:textSize="17sp"
+                 />
+         </LinearLayout>
+
+         <LinearLayout
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+
+             android:layout_height="wrap_content">
+             <ImageView
+                 android:src="@drawable/account"
+                 android:layout_width="wrap_content"
+                 android:layout_gravity="center"
+                 android:layout_height="wrap_content" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="在线客服"
+                 android:layout_marginLeft="10dp"
+                 android:textColor="#000"
+                 android:textSize="17sp"
+                 />
+         </LinearLayout>
+
+         <LinearLayout
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+             <ImageView
+                 android:layout_gravity="center"
+                 android:src="@drawable/account"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="我的地址"
+                 android:layout_marginLeft="10dp"
+                 android:textColor="#000"
+                 android:textSize="17sp"
+                 />
+         </LinearLayout>
+         <LinearLayout
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+             <ImageView
+                 android:layout_gravity="center"
+                 android:src="@drawable/account"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="账户设置"
+                 android:layout_marginLeft="10dp"
+                 android:textColor="#000"
+                 android:textSize="17sp"
+                 />
+         </LinearLayout>
+         <LinearLayout
+             android:paddingTop="10dp"
+             android:paddingBottom="10dp"
+             android:orientation="horizontal"
+             android:layout_width="match_parent"
+             android:layout_height="wrap_content">
+             <ImageView
+                 android:layout_gravity="center"
+                 android:src="@drawable/account"
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content" />
+
+             <TextView
+                 android:layout_width="wrap_content"
+                 android:layout_height="wrap_content"
+                 android:text="更多服务/奖励"
+                 android:layout_marginLeft="10dp"
+                 android:textColor="#000"
+                 android:textSize="17sp"
+                 />
+         </LinearLayout>
+
+     </LinearLayout>
+
+
+ </ScrollView>
+
+
+
+
+</LinearLayout>

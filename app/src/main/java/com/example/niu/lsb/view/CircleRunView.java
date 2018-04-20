@@ -21,7 +21,7 @@ import static android.content.ContentValues.TAG;
 public class CircleRunView extends View {
 
     int mRadius;
-   Paint mPaint1;
+   Paint mPaint1,mPaint2;
 
     public CircleRunView(Context context, AttributeSet attrs) {
         super(context, attrs);
@@ -57,7 +57,8 @@ public class CircleRunView extends View {
 
         mPaint1 = new Paint();
         mPaint1.setColor(Color.RED);
-
+        mPaint2 = new Paint();
+        mPaint2.setColor(Color.BLACK);
 
     }
 
@@ -72,15 +73,15 @@ public class CircleRunView extends View {
         mRadius = Math.min(width,height)/2;
         int mCircleX,mCircleY;
 
-        mCircleX = getLeft()+getWidth()/2;
-        mCircleY = getTop()+getHeight()/2;
+        mCircleX = getWidth()/2;
+        mCircleY = getHeight()/2;
         Log.d(TAG, "onDraw: width= "+getWidth()+" height= "+getHeight()+" "+getMeasuredWidth()+" "+getMeasuredHeight()+
                 " top= "+getTop()+" left= "+getLeft()+" mRadius= "+mRadius+" mCircleX= "+mCircleX+" mCircleY= "+mCircleY);
-        mPaint1.setColor(Color.RED);
+        //mPaint1.setColor(Color.RED);
         canvas.drawCircle(mCircleX,mCircleY,mRadius,mPaint1);
-        mPaint1.setColor(Color.BLACK);
+        //mPaint1.setColor(Color.BLACK);
         mPaint1.setStrokeWidth(20);
-        //canvas.drawPoint(getWidth()/2,0,mPaint1);
+        canvas.drawPoint(getWidth()/2+mRadius,mRadius,mPaint2);
         ObjectAnimator animator = ObjectAnimator.ofFloat(this,"rotation",0,360);
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatMode(ValueAnimator.RESTART);

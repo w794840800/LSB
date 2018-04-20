@@ -22,14 +22,14 @@ import butterknife.OnClick;
 public class SlideMenuFragment extends Fragment {
 
     DrawerLayout mActivityDrawer;
-    @BindView(R.id.slide_close)
-    ImageButton slide_close;
+   /* @BindView(R.id.slide_close)
+    ImageButton slide_close;*/
 
     @Nullable
     @Override
     public View onCreateView(LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         View view = inflater.inflate(R.layout.slide_layout,container,false);
-        slide_close = (ImageButton) view.findViewById(R.id.slide_close);
+       // slide_close = (ImageButton) view.findViewById(R.id.slide_close);
         ButterKnife.bind(view);
         return view;
     }
@@ -46,13 +46,13 @@ public class SlideMenuFragment extends Fragment {
         super.onResume();
         mActivityDrawer = (DrawerLayout) getActivity().findViewById(R.id.main_drawer);
         //Toast.makeText(getContext(),"mActivityDrawer= "+(mActivityDrawer==null),Toast.LENGTH_SHORT).show();
-        slide_close.setOnClickListener(new View.OnClickListener() {
+        /*slide_close.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                   mActivityDrawer.closeDrawers();
 
             }
-        });
+        });*/
     }
 
     @Override
@@ -61,10 +61,10 @@ public class SlideMenuFragment extends Fragment {
 
     }
 
-    @OnClick(R.id.slide_close)
+    /*@OnClick(R.id.slide_close)
     public void onViewClick(View view){
         Toast.makeText(getContext(),"tedtttt",Toast.LENGTH_SHORT).show();
         mActivityDrawer.closeDrawers();
-    }
+    }*/
 
 }

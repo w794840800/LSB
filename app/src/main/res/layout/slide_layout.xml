@@ -7,13 +7,14 @@
     android:layout_height="match_parent"
     >
 
-    <LinearLayout
+    <RelativeLayout
 
+        android:background="#000"
         android:layout_width="match_parent"
-        android:orientation="vertical"
         android:layout_height="wrap_content">
         <!--toolbar-->
-        <RelativeLayout
+       <!-- <RelativeLayout
+            android:visibility="gone"
             android:id="@+id/slide_toolbar"
             android:background="#fff"
             android:layout_width="match_parent"
@@ -29,44 +30,129 @@
              android:layout_marginLeft="5dp"
              />
             <ImageButton
-                android:id="@+id/slide_notification"
+                android:visibility="gone"
+                android:id="@+id/slide_notification1"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:src="@drawable/account"
                 android:layout_alignParentRight="true"
                 />
             
-        </RelativeLayout>
+        </RelativeLayout>-->
    <!--登录头像-->
-   <RelativeLayout
-       android:id="@+id/user_login"
-       android:layout_width="match_parent"
-       android:layout_marginBottom="30dp"
-       android:layout_height="wrap_content">
-       <ImageView
-           android:id="@+id/user_avatar"
-           android:layout_width="wrap_content"
-         android:layout_centerHorizontal="true"
-           android:src="@drawable/touxiang"
-           android:layout_height="wrap_content" />
-            <TextView
-                android:id="@+id/tv_login"
+        <RelativeLayout
+            android:id="@+id/user_login"
+            android:layout_width="wrap_content"
+            android:background="#000"
+            android:layout_height="wrap_content">
+            <ImageView
+                android:layout_marginLeft="10dp"
+                android:id="@+id/user_avatar"
                 android:layout_width="wrap_content"
-                android:layout_below="@id/user_avatar"
-                android:layout_height="wrap_content"
+                 android:layout_centerVertical="true"
+                android:src="@drawable/touxiang"
+                android:layout_marginBottom="30dp"
+                android:layout_height="wrap_content" />
+            <RelativeLayout
                 android:layout_marginTop="10dp"
-                android:textSize="18sp"
-                android:textColor="#000"
-                android:layout_centerHorizontal="true"
-                android:text="登录/注册"
-                />
+                android:layout_toRightOf="@id/user_avatar"
+                android:id="@+id/user_info"
+                android:layout_marginLeft="10dp"
 
-   </RelativeLayout>
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content">
+                <TextView
+                    android:id="@+id/user_name"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:text="跑男一号"
+                    android:textSize="18sp"
+                    android:layout_marginLeft="10dp"
+
+                    />
+                <TextView
+                    android:id="@+id/account"
+                    android:text="账    号: "
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="30dp"
+                    android:textColor="#fff"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content" />
+                <TextView
+                    android:id="@+id/user_phone"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:text="17505588227"
+                    android:layout_marginTop="30dp"
+                    android:layout_toRightOf="@id/account"
+                    />
+                <TextView
+                    android:id="@+id/credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:layout_below="@id/account"
+                    android:text="履行值: "
+                    android:layout_marginLeft="10dp"
+                    android:layout_marginTop="10dp"
+                    android:layout_marginBottom="15dp"
+                    />
+                <TextView
+                    android:id="@+id/user_credit"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:textColor="#fff"
+                    android:layout_marginTop="10dp"
+                    android:text="100"
+
+                    android:layout_below="@id/account"
+                    android:layout_toRightOf="@id/credit"
+                    />
 
 
 
 
-    </LinearLayout>
+
+            </RelativeLayout>
+
+
+
+           <!-- <TextView
+                android:visibility="gone"
+                     android:id="@+id/tv_login"
+                     android:layout_width="wrap_content"
+                     android:layout_below="@id/user_avatar"
+                     android:layout_height="wrap_content"
+                     android:layout_marginTop="10dp"
+                     android:textSize="18sp"
+                     android:textColor="#fff"
+                     android:layout_centerHorizontal="true"
+                     android:text="登录/注册"
+                     />-->
+
+
+        </RelativeLayout>
+
+<ImageView
+    android:id="@+id/slide_setting"
+    android:layout_width="24dp"
+    android:src="@drawable/finals_favior_icon_normal"
+    android:layout_alignParentRight="true"
+    android:layout_marginRight="5dp"
+    android:layout_height="24dp"
+
+    />
+        <ImageView
+            android:visibility="visible"
+            android:id="@+id/slide_notification"
+            android:layout_width="24dp"
+            android:src="@drawable/finals_history_icon_normal"
+            android:layout_alignParentRight="true"
+            android:layout_marginRight="30dp"
+            android:layout_height="24dp" />
+    </RelativeLayout>
 
 
 

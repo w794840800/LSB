@@ -1,6 +1,11 @@
 package com.example.niu.lsb;
 
 import android.Manifest;
+import android.animation.Animator;
+import android.animation.AnimatorListenerAdapter;
+import android.animation.AnimatorSet;
+import android.animation.ObjectAnimator;
+import android.animation.ValueAnimator;
 import android.content.Context;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
@@ -12,17 +17,22 @@ import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
 import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
 import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
+import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
 import android.util.Log;
 import android.view.Gravity;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
+import android.widget.LinearLayout;
+import android.widget.RelativeLayout;
 import android.widget.Toast;
 
+import com.amap.api.col.sl3.bi;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -40,6 +50,7 @@ import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
 import com.amap.api.maps.model.Text;
+import com.amap.api.maps.model.animation.AnimationSet;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -59,7 +70,16 @@ import butterknife.OnClick;
 
 public class MainActivity extends AppCompatActivity {
     MapView mapView;
-
+    @BindView(R.id.slipeOnmoreview)
+    View slipeOnmoreview;
+    @BindView(R.id.other_menu)
+    LinearLayout other_menu;
+    @BindView(R.id.logo_city)
+    LinearLayout logo_city;
+    @BindView(R.id.three_menu)
+    LinearLayout threeMenu;
+    @BindView(R.id.center_cursor)
+    ImageView mCenterCursor;
     @BindView(R.id.main_drawer)
     DrawerLayout mDrawerLayout;
     @BindView(R.id.main_account)
@@ -74,7 +94,14 @@ public class MainActivity extends AppCompatActivity {
     UiSettings uiSetting;
     Map<String,LatLng>addressLatng;
     private AMapLocationClient locationClient = null;
+    int otherMenuHeight;
     AMap aMap;
+
+    boolean mBottomMenuExpand;
+
+    ObjectAnimator expandAnimatorOne,expandAnimatorTwo ;
+    ObjectAnimator collaspeAnimatorOne,collaspeAnimatorTwo,collaspeAnimatorThree;
+    AnimatorSet animatorSetOne,animatorSetTwo;
     //声明AMapLocationClientOption对象
     public AMapLocationClientOption mLocationOption = null;
     //声明AMapLocationClient类对象
@@ -97,6 +124,160 @@ public class MainActivity extends AppCompatActivity {
         mButton = (Button) findViewById(R.id.begin);
         mCameraUpdate = CameraUpdateFactory.zoomTo(17);
         ButterKnife.bind(this);
+        other_menu.post(new Runnable() {
+            @Override
+            public void run() {
+                otherMenuHeight = other_menu.getLayoutParams().height;
+              //  Toast.makeText(getApplicationContext(),"test height= "+otherMenuHeight,Toast.LENGTH_SHORT).show();
+
+            }
+        });
+        slipeOnmoreview.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                     //展开动画
+
+                /*expand1.setDuration(100);
+                expand.setDuration(100);
+                //.setRepeatCount(ValueAnimator.INFINITE);
+
+                //expand .start();
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.play(expand).with(expand1);
+                animatorSet.start();*/
+            /*    expand.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+
+                        other_menu.setVisibility(View.VISIBLE);
+                        mBottomMenuExpand = true;
+
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animator) {
+
+                    }
+                });*/
+                expandAnimatorOne =  ObjectAnimator.ofFloat(threeMenu,"translationY",0,-otherMenuHeight);
+                expandAnimatorTwo =  ObjectAnimator.ofFloat(slipeOnmoreview,"translationY",0,-otherMenuHeight);
+                animatorSetOne = new AnimatorSet();
+                animatorSetOne.play(expandAnimatorOne).with(expandAnimatorTwo);
+                animatorSetOne.setDuration(100);
+                //animatorSet.start();
+
+
+                collaspeAnimatorOne =  ObjectAnimator.ofFloat(threeMenu,"translationY",threeMenu.getTranslationY(),0);
+                collaspeAnimatorTwo =  ObjectAnimator.ofFloat(slipeOnmoreview,"translationY",slipeOnmoreview.getTranslationY(),
+                        0);
+                animatorSetTwo = new AnimatorSet();
+                animatorSetTwo.play(collaspeAnimatorOne).with(collaspeAnimatorTwo);
+                animatorSetTwo.setDuration(100);
+
+                if (mBottomMenuExpand){
+                    animatorSetTwo.start();
+                    //.setRepeatCount(ValueAnimator.INFINITE);
+                    //expand .start();
+
+                }else{
+                    animatorSetOne.start();
+
+               /*     expand =  ObjectAnimator.ofFloat(threeMenu,"translationY",0,-otherMenuHeight);
+                    expand1 =  ObjectAnimator.ofFloat(slipeOnmoreview,"translationY",0,-otherMenuHeight);
+                    expand1.setDuration(100);
+                    expand.setDuration(100);
+                    //.setRepeatCount(ValueAnimator.INFINITE);
+
+                    //expand .start();
+                    animatorSet = new AnimatorSet();
+                    animatorSet.play(expand).with(expand1);
+                    animatorSet.start();*/
+
+                }
+                expandAnimatorOne.addListener(new AnimatorListenerAdapter() {
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        other_menu.setVisibility(View.VISIBLE);
+                        mBottomMenuExpand =true;
+                    }
+                });
+                collaspeAnimatorOne.addListener(new AnimatorListenerAdapter() {
+
+
+                    @Override
+                    public void onAnimationStart(Animator animation) {
+                        super.onAnimationStart(animation);
+                        other_menu.setVisibility(View.GONE);
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animation) {
+                        super.onAnimationEnd(animation);
+                        mBottomMenuExpand =false;
+                        other_menu.setVisibility(View.GONE);
+                    }
+                });
+
+
+            }
+        });
+
+
+        logo_city.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                //Toast.makeText(getApplicationContext(),"test",Toast.LENGTH_SHORT).show();
+                /*ObjectAnimator expand =  ObjectAnimator.ofFloat(threeMenu,"translationY",0,-otherMenuHeight);
+                ObjectAnimator expand1 =  ObjectAnimator.ofFloat(slipeOnmoreview,"translationY",0,-otherMenuHeight);
+                expand1.setDuration(100);
+                expand.setDuration(100);
+                        //.setRepeatCount(ValueAnimator.INFINITE);
+
+                //expand .start();
+                AnimatorSet animatorSet = new AnimatorSet();
+                animatorSet.play(expand).with(expand1);
+                animatorSet.start();
+
+                //expand.setDuration(400);
+                //.setRepeatCount(ValueAnimator.INFINITE);
+                expand.addListener(new Animator.AnimatorListener() {
+                    @Override
+                    public void onAnimationStart(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationEnd(Animator animator) {
+
+                        other_menu.setVisibility(View.VISIBLE);
+                    }
+
+                    @Override
+                    public void onAnimationCancel(Animator animator) {
+
+                    }
+
+                    @Override
+                    public void onAnimationRepeat(Animator animator) {
+
+                    }
+                });
+*/
+
+            }
+        });
         if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_PHONE_STATE)!=PackageManager.PERMISSION_GRANTED){
 
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_FINE_LOCATION},1);
@@ -187,8 +368,11 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onCameraChange(CameraPosition cameraPosition) {
 
-             /*   Log.d("wanglei", "onCameraChange: cameraPosition= "+cameraPosition.toString());
-                   centerMarker.setTitle(".........");
+              Log.d("wanglei", "onCameraChange: cameraPosition= "+cameraPosition.toString());
+                if (mCenterCursor!=null) {
+                    mCenterCursor.setImageResource(R.drawable.icon_home_location_drag);
+                }
+                /*   centerMarker.setTitle(".........");
                 if (centerMarker!=null){
 
                     LatLng latlang = cameraPosition.target;
@@ -199,6 +383,11 @@ public class MainActivity extends AppCompatActivity {
 
             @Override
             public void onCameraChangeFinish(CameraPosition cameraPosition) {
+
+                Log.d("TAG", "onCameraChangeFinish: cameraPosition= "+cameraPosition.target.toString());
+                if (mCenterCursor!=null) {
+                    mCenterCursor.setImageResource(R.drawable.icon_home_location_normal);
+                }
                /* centerMarker.setTitle("附近有6位跑男");
 
                 Log.d("TAG", "onCameraChangeFinish: cameraPosition= "+cameraPosition.target.toString()+
@@ -339,7 +528,16 @@ public class MainActivity extends AppCompatActivity {
 
             lant = addressLatng.get(s);
             Log.d("TAG", "getAddressLatngFromNetWork: lant= "+lant.toString());
-            markOption = new MarkerOptions().position(lant).icon(BitmapDescriptorFactory.fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.now_location))
+
+            View markerView = LayoutInflater.from(this).inflate(R.layout.marker_runningman,mapView,false);
+            Log.d("TAG", "getAddressLatngFromNetWork: marker= "+markerView.getWidth()+" "+markerView.getHeight());
+            markOption = new MarkerOptions().position(lant).
+                    icon(
+                           /* BitmapDescriptorFactory.
+                            fromBitmap(BitmapFactory.decodeResource(getResources(),R.drawable.home_runmen_icon))*/
+
+                            BitmapDescriptorFactory.fromView(markerView)
+
             ).infoWindowEnable(false);
 
             //markOption

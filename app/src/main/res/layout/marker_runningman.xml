@@ -1,0 +1,6 @@
+<ImageView android:layout_width="48dp"
+    android:layout_height="48dp"
+    android:src="@drawable/home_runmen_icon"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+</ImageView>

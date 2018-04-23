@@ -1,23 +1,19 @@
-package com.example.niu.lsb;
+package com.example.niu.lsb.ui;
 
 import android.Manifest;
 import android.animation.Animator;
 import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
-import android.graphics.BitmapFactory;
 import android.location.Location;
+import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
 import android.support.v4.content.ContextCompat;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawable;
-import android.support.v4.graphics.drawable.RoundedBitmapDrawableFactory;
-import android.support.v4.view.GravityCompat;
 import android.support.v4.widget.DrawerLayout;
-import android.support.v4.widget.TextViewCompat;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.DisplayMetrics;
@@ -26,13 +22,11 @@ import android.view.Gravity;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.LinearLayout;
 import android.widget.RelativeLayout;
 import android.widget.Toast;
 
-import com.amap.api.col.sl3.bi;
 import com.amap.api.location.AMapLocation;
 import com.amap.api.location.AMapLocationClient;
 import com.amap.api.location.AMapLocationClientOption;
@@ -42,27 +36,20 @@ import com.amap.api.maps.CameraUpdate;
 import com.amap.api.maps.CameraUpdateFactory;
 import com.amap.api.maps.MapView;
 import com.amap.api.maps.UiSettings;
-import com.amap.api.maps.model.BitmapDescriptor;
 import com.amap.api.maps.model.BitmapDescriptorFactory;
 import com.amap.api.maps.model.CameraPosition;
 import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
-import com.amap.api.maps.model.Text;
-import com.amap.api.maps.model.animation.AnimationSet;
+import com.example.niu.lsb.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
-import java.security.Permission;
 import java.util.ArrayList;
 import java.util.HashMap;
-import java.util.Iterator;
-import java.util.List;
 import java.util.Locale;
 import java.util.Map;
-import java.util.Objects;
-import java.util.Set;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
@@ -84,10 +71,20 @@ public class MainActivity extends AppCompatActivity {
     DrawerLayout mDrawerLayout;
     @BindView(R.id.main_account)
     ImageView main_account;
+    @BindView(R.id.main_location)
     ImageView mLocation;
+    @BindView(R.id.main_center_info)
+    RelativeLayout mCenterInfo;
+    @BindView(R.id.main_help_buy)
+    LinearLayout mHelpBuy;
+    @BindView(R.id.main_help_take)
+    LinearLayout mHelpTake;
+    @BindView(R.id.main_help_send)
+    LinearLayout mhelpSend;
+
+
     LatLng nowLatLng;
     ArrayList<MarkerOptions>saveMarker;
-    Button mButton;
     int index = 0;
     Marker centerMarker;
     CameraUpdate mCameraUpdate;
@@ -121,7 +118,6 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mButton = (Button) findViewById(R.id.begin);
         mCameraUpdate = CameraUpdateFactory.zoomTo(17);
         ButterKnife.bind(this);
         other_menu.post(new Runnable() {
@@ -315,8 +311,6 @@ public class MainActivity extends AppCompatActivity {
         mapView = (MapView) findViewById(R.id.mapview);
         mapView.onCreate(savedInstanceState);
         saveMarker = new ArrayList<>();
-        mLocation = (ImageView) findViewById(R.id.location);
-
         aMap = mapView.getMap();
         //uiSetting =aMap.getUiSettings();
         //uiSetting.setZoomGesturesEnabled(false);
@@ -372,6 +366,10 @@ public class MainActivity extends AppCompatActivity {
                 if (mCenterCursor!=null) {
                     mCenterCursor.setImageResource(R.drawable.icon_home_location_drag);
                 }
+                if (mCenterInfo!=null){
+                    mCenterInfo.setVisibility(View.GONE);
+
+                }
                 /*   centerMarker.setTitle(".........");
                 if (centerMarker!=null){
 
@@ -392,7 +390,10 @@ public class MainActivity extends AppCompatActivity {
 
                 Log.d("TAG", "onCameraChangeFinish: cameraPosition= "+cameraPosition.target.toString()+
                 " snippet= "+centerMarker.getTitle());*/
+                if (mCenterInfo!=null){
+                    mCenterInfo.setVisibility(View.VISIBLE);
 
+                }
                 removeAllSaveMask();
                 getAddressLatngFromNetWork();
 
@@ -435,12 +436,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        mButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                locationClient.startLocation();
-            }
-        });
 
 
     }
@@ -455,7 +450,7 @@ public class MainActivity extends AppCompatActivity {
         slide_menu.setLayoutParams(layoutParams);
     }
     @OnClick(R.id.main_account)
-    public void onViewClick(View v){
+    public void onViewClicked(View v){
          switch (v.getId()){
              case R.id.main_account:
                  mDrawerLayout.openDrawer(Gravity.LEFT);
@@ -464,6 +459,20 @@ public class MainActivity extends AppCompatActivity {
          }
 
     }
+
+    @OnClick({R.id.main_help_buy,R.id.main_help_send,R.id.main_help_take})
+    public void onHelpClicked(View view){
+
+        Intent intent = new Intent(this,HelpSendActivity.class);
+        //startActivity(intent);
+            Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
+            //i.setAction(Intent.ACTION_GET_CONTENT);
+        //i.setType("video/*");
+            startActivityForResult(i,1);
+
+
+    }
+
 
     private AMapLocationClientOption getDefaultOption(){
         AMapLocationClientOption mOption = new AMapLocationClientOption();

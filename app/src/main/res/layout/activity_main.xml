@@ -34,13 +34,10 @@
                 android:layout_width="match_parent"
                 android:layout_height="match_parent" />
 
-            <Button
-                android:id="@+id/begin"
-                android:layout_width="wrap_content"
-                android:layout_height="wrap_content"
-                android:visibility="gone" />
+
 
             <ImageView
+                android:visibility="gone"
                 android:id="@+id/location"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -127,7 +124,7 @@
                     android:background="#e3e3e3"
                     android:layout_height="2dp"/>
             </RelativeLayout>
-
+   <!-- 底部菜单-->
          <RelativeLayout
              android:id="@+id/bottom_menu"
              android:visibility="visible"
@@ -146,7 +143,6 @@
 
              <!--三个菜单 帮我买送取-->
              <LinearLayout
-
                  android:id="@+id/three_menu"
                  android:visibility="visible"
                  android:layout_width="match_parent"
@@ -160,7 +156,8 @@
                  >
 
                   <LinearLayout
-                    android:gravity="center"
+                      android:id="@+id/main_help_buy"
+                      android:gravity="center"
                       android:layout_width="0dp"
                       android:layout_weight="1"
                       android:orientation="vertical"
@@ -179,6 +176,7 @@
 
                   </LinearLayout>
                  <LinearLayout
+                     android:id="@+id/main_help_send"
                      android:layout_width="0dp"
                      android:layout_weight="1"
                      android:orientation="vertical"
@@ -198,6 +196,7 @@
 
                  </LinearLayout>
                  <LinearLayout
+                     android:id="@+id/main_help_take"
                      android:layout_width="0dp"
                      android:layout_weight="1"
                      android:orientation="vertical"
@@ -273,8 +272,20 @@
 
          </RelativeLayout>
 
+            <!--左下角定位-->
+            <ImageView
+              android:layout_alignParentLeft="true"
+                android:layout_alignParentBottom="true"
+                android:id="@+id/main_location"
+                android:layout_marginBottom="110dp"
+                android:src="@drawable/img_loc_001"
+                android:layout_width="34dp"
+                android:layout_marginLeft="5dp"
+                android:layout_height="34dp" />
+
 
         </RelativeLayout>
+
         <!--中间区域-->
         <RelativeLayout
             android:layout_width="match_parent"
@@ -286,7 +297,106 @@
                 android:layout_height="36dp"
                 android:visibility="visible"
                 android:src="@drawable/icon_home_location_normal"/>
-            <LinearLayout
+
+            <RelativeLayout
+
+                android:id="@+id/main_center_info"
+                android:layout_above="@id/center_cursor"
+                android:layout_width="250dp"
+                android:layout_height="wrap_content"
+                android:background="@drawable/main_circle_bg"
+                android:orientation="horizontal"
+                android:layout_marginBottom="10dp"
+                android:layout_centerInParent="true" >
+                <TextView
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:text="5"
+                    android:layout_marginLeft="30dp"
+                    android:layout_marginTop="22dp"
+                    android:textSize="15sp"
+                    />
+                <com.example.niu.lsb.view.CircleRunView
+                     android:id="@+id/main_circleview"
+                     android:layout_centerVertical="true"
+                     android:layout_marginLeft="10dp"
+                    android:layout_width="50dp"
+                    android:layout_height="50dp" />
+
+                      <LinearLayout
+                          android:paddingTop="5dp"
+                          android:layout_marginLeft="10dp"
+                          android:paddingBottom="2dp"
+                          android:id="@+id/ll_location"
+                          android:layout_toRightOf="@id/main_circleview"
+                          android:layout_width="wrap_content"
+                          android:orientation="horizontal"
+                          android:layout_height="wrap_content">
+
+                          <TextView
+                              android:id="@+id/main_wozai"
+                              android:layout_width="wrap_content"
+                              android:layout_height="wrap_content"
+                              android:layout_toRightOf="@id/main_circleview"
+                              android:text="我在:"
+                              />
+                          <TextView
+                              android:id="@+id/main_mylocation"
+                              android:layout_toRightOf="@id/main_wozai"
+                              android:layout_width="wrap_content"
+                              android:text="拓基广场"
+                              android:layout_height="wrap_content" />
+                      </LinearLayout>
+
+
+                 <View
+                     android:id="@+id/main_view1"
+                     android:layout_toRightOf="@id/main_circleview"
+                     android:layout_width="match_parent"
+                     android:layout_height="1dp"
+                     android:background="#DDDDDD"
+                     android:layout_marginLeft="10dp"
+                     android:layout_marginRight="15dp"
+                     android:layout_below="@id/ll_location"
+                />
+               <!-- <ImageView
+                    android:layout_toRightOf="@id/main_view1"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_marginRight="10dp"
+                    android:layout_marginLeft="5dp"
+                    android:src="@drawable/icon_arrow_right"
+
+                    />-->
+
+                <LinearLayout
+                    android:paddingBottom="10dp"
+                    android:layout_marginLeft="10dp"
+                    android:paddingTop="2dp"
+                    android:layout_toRightOf="@id/main_circleview"
+                    android:layout_width="wrap_content"
+                    android:orientation="horizontal"
+                    android:layout_below="@id/main_view1"
+                    android:layout_height="wrap_content">
+                    <TextView
+                        android:text="附近有"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+            <TextView
+                android:id="@+id/main_totalrunman"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="15位跑男"
+                android:textColor="#000"
+                />
+                    <TextView
+                        android:text="为你服务"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content" />
+                </LinearLayout>
+            </RelativeLayout>
+
+            <!--  <LinearLayout
                 android:visibility="gone"
                 android:orientation="horizontal"
                 android:layout_marginLeft="90dp"
@@ -311,7 +421,9 @@
                    android:textSize="14sp"
 
                    />
-            </LinearLayout>
+            </LinearLayout>-->
+
+
 
             <com.example.niu.lsb.view.SlipeOnMoreView
                 android:id="@+id/slipeOnmoreview"
@@ -325,7 +437,12 @@
                 android:layout_marginBottom="80dp" />
 
 
+
+
         </RelativeLayout>
+
+
+
 
 
     </FrameLayout>

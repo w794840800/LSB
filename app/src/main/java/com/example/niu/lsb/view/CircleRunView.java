@@ -57,6 +57,7 @@ public class CircleRunView extends View {
 
         mPaint1 = new Paint();
         mPaint1.setColor(Color.RED);
+        mPaint1.setStyle(Paint.Style.STROKE);
         mPaint2 = new Paint();
         mPaint2.setColor(Color.BLACK);
 
@@ -80,14 +81,14 @@ public class CircleRunView extends View {
         //mPaint1.setColor(Color.RED);
         canvas.drawCircle(mCircleX,mCircleY,mRadius,mPaint1);
         //mPaint1.setColor(Color.BLACK);
-        mPaint1.setStrokeWidth(20);
-        canvas.drawPoint(getWidth()/2+mRadius,mRadius,mPaint2);
-        ObjectAnimator animator = ObjectAnimator.ofFloat(this,"rotation",0,360);
+       // mPaint1.setStrokeWidth(20);
+       // canvas.drawPoint(getWidth()/2+mRadius,mRadius,mPaint2);
+       /* ObjectAnimator animator = ObjectAnimator.ofFloat(this,"rotation",0,360);
         animator.setInterpolator(new LinearInterpolator());
         animator.setRepeatMode(ValueAnimator.RESTART);
         animator.setDuration(3000);
-        animator.setRepeatCount(ValueAnimator.INFINITE);
-        animator.start();
+        animator.setRepeatCount(ValueAnimator.INFINITE);*/
+        //animator.start();
 
 
     }

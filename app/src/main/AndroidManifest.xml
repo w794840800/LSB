@@ -48,7 +48,7 @@
             android:name="com.amap.api.v2.apikey"
             android:value="4d29b8eac84a4e466a5d10eada615513" />
 
-        <activity android:name=".MainActivity">
+        <activity android:name=".ui.MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -58,9 +58,8 @@
 
         <service android:name="com.amap.api.location.APSService" />
 
-        <activity android:name=".Main2Activity">
-
-        </activity>
+        <activity android:name=".ui.HelpSendActivity" />
+        <activity android:name=".ui.WebViewActivity"></activity>
     </application>
 
 </manifest>

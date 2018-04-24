@@ -1,4 +1,4 @@
-package com.example.niu.lsb;
+package com.example.niu.mlpt;
 
 import android.content.Context;
 import android.support.test.InstrumentationRegistry;

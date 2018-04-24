@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:id="@+id/cl_webview"
-    tools:context="com.example.niu.lsb.ui.WebViewActivity">
+    tools:context="com.example.niu.mlpt.ui.WebViewActivity">
 
         <RelativeLayout
             android:id="@+id/web_toolbar"
@@ -13,16 +13,19 @@
             android:background="#fff"
             android:layout_height="46dp">
             <ImageView
+                android:layout_marginLeft="15dp"
                 android:id="@+id/web_back"
                 android:src="@drawable/img_back"
-                android:layout_width="wrap_content"
+                android:layout_width="32dp"
                 android:layout_alignParentLeft="true"
-                android:layout_height="wrap_content" />
+                android:layout_centerVertical="true"
+                android:layout_height="32dp" />
             <TextView
                 android:id="@+id/web_title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:text="hello"
+                android:textSize="16sp"
+                android:textColor="#000"
                 android:layout_centerInParent="true"
                 />
         </RelativeLayout>
@@ -37,7 +40,7 @@
         style="@style/Base.Widget.AppCompat.ProgressBar.Horizontal"
         />
 <FrameLayout
-    android:layout_below="@id/web_toolbar"
+    android:layout_below="@id/web_progress"
     android:id="@+id/webview"
     android:layout_width="match_parent"
     android:layout_height="match_parent">

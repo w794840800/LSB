@@ -1,4 +1,4 @@
-package com.example.niu.lsb.view;
+package com.example.niu.mlpt.view;
 
 import android.content.Context;
 import android.graphics.Canvas;

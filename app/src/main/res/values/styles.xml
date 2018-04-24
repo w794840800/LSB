@@ -4,8 +4,12 @@
     <style name="AppTheme" parent="Theme.AppCompat.Light.NoActionBar">
         <!-- Customize your theme here. -->
         <item name="colorPrimary">@color/colorPrimary</item>
-        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorPrimaryDark">@color/statusBarColorBlack</item>
         <item name="colorAccent">@color/colorAccent</item>
     </style>
-
+ <style name="LoginEditText" parent="AppTheme">
+     <item name="colorControlNormal" >#DBDBDB</item>
+     <item name="colorControlActivated">#DBDBDB</item>
+     <item name="colorAccent">#DBDBDB</item>
+ </style>
 </resources>

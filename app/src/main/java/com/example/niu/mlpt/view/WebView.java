@@ -1,7 +1,6 @@
-package com.example.niu.lsb.view;
+package com.example.niu.mlpt.view;
 
 import android.content.Context;
-import android.webkit.WebChromeClient;
 import android.webkit.WebSettings;
 import android.widget.ProgressBar;
 

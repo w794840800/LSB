@@ -1,22 +1,24 @@
-package com.example.niu.lsb.ui;
+package com.example.niu.mlpt.ui;
 
-import android.app.Fragment;
 import android.graphics.Bitmap;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.webkit.WebChromeClient;
+import android.webkit.WebResourceRequest;
 import android.webkit.WebViewClient;
 import android.widget.FrameLayout;
+import android.widget.ImageView;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
-import com.example.niu.lsb.R;
-import com.example.niu.lsb.view.WebView;
+import com.example.niu.mlpt.R;
+import com.example.niu.mlpt.view.WebView;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
+import butterknife.OnClick;
 
 public class WebViewActivity extends AppCompatActivity {
     WebView mWebView;
@@ -27,6 +29,8 @@ public class WebViewActivity extends AppCompatActivity {
     FrameLayout mWebViewContainer;
     @BindView(R.id.web_progress)
     ProgressBar mWebProgress;
+    @BindView(R.id.web_back)
+    ImageView mWebBack;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -38,7 +42,7 @@ public class WebViewActivity extends AppCompatActivity {
         //mWebView.addView(view);
          mWebViewContainer.addView(mWebView);
 
-
+  mWebView.setWebViewClient(new MyWebViewClient());
 
          mWebView.setWebChromeClient(new WebChromeClient(){
 
@@ -52,7 +56,16 @@ public class WebViewActivity extends AppCompatActivity {
              @Override
              public void onProgressChanged(android.webkit.WebView view, int newProgress) {
                  super.onProgressChanged(view, newProgress);
+                 //mWebProgress.setVisibility(View.VISIBLE);
+                 if (mWebProgress!=null&&newProgress!=100){
 
+                     mWebProgress.setVisibility(View.VISIBLE);
+
+                 }else if (mWebProgress!=null){
+                     mWebProgress.setVisibility(View.GONE);
+
+                 }
+                 Log.d("test", "onProgressChanged: progress= "+newProgress);
                  mWebProgress.setProgress(newProgress);
 
              }
@@ -63,7 +76,19 @@ public class WebViewActivity extends AppCompatActivity {
         mWebView.loadUrl(url);
 
     }
+    @OnClick(R.id.web_back)
 
+    public void onViewClick(View v){
+
+        if (mWebView.canGoBack()){
+            mWebView.goBack();
+        }else{
+
+            finish();
+        }
+
+
+    }
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -79,11 +104,16 @@ public class WebViewActivity extends AppCompatActivity {
     }
 
     class MyWebViewClient extends WebViewClient{
-
+        @Override
+        public boolean shouldOverrideUrlLoading(android.webkit.WebView view, WebResourceRequest request) {
+                      view.loadUrl(request.getUrl().getPath());
+            return true;
+            //return super.shouldOverrideUrlLoading(view, request);
+        }
         @Override
         public void onPageStarted(android.webkit.WebView view, String url, Bitmap favicon) {
             super.onPageStarted(view, url, favicon);
-           mWebProgress.setVisibility(View.VISIBLE);
+
         }
 
         @Override

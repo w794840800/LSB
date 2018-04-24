@@ -316,7 +316,7 @@
                     android:layout_marginTop="22dp"
                     android:textSize="15sp"
                     />
-                <com.example.niu.lsb.view.CircleRunView
+                <com.example.niu.mlpt.view.CircleRunView
                      android:id="@+id/main_circleview"
                      android:layout_centerVertical="true"
                      android:layout_marginLeft="10dp"
@@ -425,7 +425,7 @@
 
 
 
-            <com.example.niu.lsb.view.SlipeOnMoreView
+            <com.example.niu.mlpt.view.SlipeOnMoreView
                 android:id="@+id/slipeOnmoreview"
                 android:layout_width="40dp"
                 android:background="#fff"
@@ -456,7 +456,7 @@
     <fragment
         android:layout_gravity="left"
         android:id="@+id/slide_menu"
-        android:name="com.example.niu.lsb.SlideMenuFragment"
+        android:name="com.example.niu.mlpt.SlideMenuFragment"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         />

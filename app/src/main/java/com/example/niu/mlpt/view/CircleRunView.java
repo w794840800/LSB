@@ -1,7 +1,5 @@
-package com.example.niu.lsb.view;
+package com.example.niu.mlpt.view;
 
-import android.animation.ObjectAnimator;
-import android.animation.ValueAnimator;
 import android.content.Context;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -9,8 +7,6 @@ import android.graphics.Paint;
 import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
-import android.view.animation.AccelerateDecelerateInterpolator;
-import android.view.animation.LinearInterpolator;
 
 import static android.content.ContentValues.TAG;
 

@@ -1,4 +1,4 @@
-package com.example.niu.lsb;
+package com.example.niu.mlpt;
 
 import org.junit.Test;
 

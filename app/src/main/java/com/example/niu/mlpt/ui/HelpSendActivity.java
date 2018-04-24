@@ -1,11 +1,11 @@
-package com.example.niu.lsb.ui;
+package com.example.niu.mlpt.ui;
 
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageView;
 
-import com.example.niu.lsb.R;
+import com.example.niu.mlpt.R;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;

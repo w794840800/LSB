@@ -1,4 +1,4 @@
-package com.example.niu.lsb.ui;
+package com.example.niu.mlpt.ui;
 
 import android.Manifest;
 import android.animation.Animator;
@@ -6,9 +6,10 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
-import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
+import android.database.Cursor;
+import android.graphics.Bitmap;
 import android.location.Location;
 import android.provider.MediaStore;
 import android.support.v4.app.ActivityCompat;
@@ -42,7 +43,7 @@ import com.amap.api.maps.model.LatLng;
 import com.amap.api.maps.model.Marker;
 import com.amap.api.maps.model.MarkerOptions;
 import com.amap.api.maps.model.MyLocationStyle;
-import com.example.niu.lsb.R;
+import com.example.niu.mlpt.R;
 
 import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
@@ -82,6 +83,8 @@ public class MainActivity extends AppCompatActivity {
     @BindView(R.id.main_help_send)
     LinearLayout mhelpSend;
 
+    ArrayList<String>images = new ArrayList<>();
+    ArrayList<Bitmap> bitmapArrayList = new ArrayList<>();
 
     LatLng nowLatLng;
     ArrayList<MarkerOptions>saveMarker;
@@ -278,6 +281,10 @@ public class MainActivity extends AppCompatActivity {
 
             ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_PHONE_STATE,Manifest.permission.ACCESS_FINE_LOCATION},1);
 
+        }  if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION},1);
+
         }
         /*main_account.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -460,15 +467,54 @@ public class MainActivity extends AppCompatActivity {
 
     }
 
+    private void getThumbnail() {
+        Cursor mCursor = getContentResolver().query(
+                MediaStore.Video.Media.EXTERNAL_CONTENT_URI,
+                null, null, null,
+                MediaStore.MediaColumns.DATE_ADDED + " DESC");
+        if (mCursor.moveToFirst()) {
+            int _date = mCursor.getColumnIndex(MediaStore.Video.Media.DATA);
+            int columnIndex = mCursor.getColumnIndex(MediaStore.Video.Media._ID);
+
+            do {
+                //data 是数据的意思，获取的就是文件数据，也就是文件路径。
+                String path = mCursor.getString(_date);
+                int anInt = mCursor.getInt(columnIndex);
+                //DebugUtil.error("path:"+path);
+                images.add(path);
+                Bitmap bitmap= MediaStore.Video.Thumbnails.getThumbnail(getContentResolver(),anInt, MediaStore.Video.Thumbnails.MINI_KIND,null);
+                bitmapArrayList.add(bitmap);
+            } while (mCursor.moveToNext());
+        }
+        mCursor.close();
+        Log.d("wanglei ", "getThumbnail: images size = "+images.size()+
+        " bitmapArrayList size= "+bitmapArrayList.size());
+     //   handler.sendEmptyMessage(0);
+    }
+
     @OnClick({R.id.main_help_buy,R.id.main_help_send,R.id.main_help_take})
     public void onHelpClicked(View view){
+        //bitmapArrayList.clear();
+        //images.clear();
 
-        Intent intent = new Intent(this,HelpSendActivity.class);
+       /* Matisse.from(MainActivity.this)
+                .choose(MimeType.allOf())
+                .countable(true)
+                .maxSelectable(9)
+                //.addFilter(new GifSizeFilter(320, 320, 5 * Filter.K * Filter.K))
+                .gridExpectedSize(120)
+                .restrictOrientation(ActivityInfo.SCREEN_ORIENTATION_UNSPECIFIED)
+                .thumbnailScale(0.85f)
+                .imageEngine(new GlideEngine())
+                .forResult(1);*/
+
+     //getThumbnail();
+       /* Intent intent = new Intent(this,HelpSendActivity.class);
         //startActivity(intent);
             Intent i = new Intent(Intent.ACTION_PICK, MediaStore.Video.Media.EXTERNAL_CONTENT_URI);
             //i.setAction(Intent.ACTION_GET_CONTENT);
-        //i.setType("video/*");
-            startActivityForResult(i,1);
+        //i.setType("video*//*");
+            startActivityForResult(i,1);*/
 
 
     }

@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="#F1F1F1"
-    tools:context="com.example.niu.lsb.ui.HelpSendActivity">
+    tools:context="com.example.niu.mlpt.ui.HelpSendActivity">
 
     <RelativeLayout
         android:id="@+id/send_toolbar"
@@ -151,7 +151,7 @@
              android:layout_width="wrap_content"
              android:layout_height="wrap_content" />
 
-<com.example.niu.lsb.view.ClearEditText
+<com.example.niu.mlpt.view.ClearEditText
     android:layout_gravity="center"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"

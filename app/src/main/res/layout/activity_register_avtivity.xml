@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="com.example.niu.mlpt.ui.LoginActivity">
+
+    <ImageView
+
+        android:id="@+id/iv_register_back"
+        android:layout_width="22dp"
+        android:layout_height="22dp"
+        android:layout_marginLeft="10dp"
+        android:layout_marginTop="10dp"
+        android:src="@drawable/close" />
+
+
+    <ImageView
+        android:id="@+id/iv_register_logo"
+        android:layout_width="72dp"
+        android:layout_height="72dp"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="30dp"
+        android:src="@drawable/login_verifi_pwd" />
+
+    <LinearLayout
+        android:id="@+id/ll_register_title"
+        android:layout_marginTop="30dp"
+        android:layout_centerHorizontal="true"
+        android:layout_width="match_parent"
+
+        android:layout_height="wrap_content"
+
+        android:orientation="vertical"
+        android:layout_below="@id/iv_register_logo"
+        >
+
+        <TextView
+            android:gravity="center"
+            android:id="@+id/tv_register"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="账号注册"
+            android:textSize="20sp"
+            android:layout_gravity="center"
+            android:textColor="#000"
+            />
+
+
+        <LinearLayout
+            android:layout_marginTop="20dp"
+            android:layout_marginLeft="60dp"
+            android:layout_marginRight="60dp"
+            android:visibility="visible"
+            android:id="@+id/ll_register_info"
+            android:layout_width="match_parent"
+            android:orientation="vertical"
+            android:layout_height="wrap_content">
+
+            <EditText
+                android:visibility="visible"
+                android:id="@+id/et_register_phone"
+                android:layout_width="match_parent"
+                android:layout_height="50dp"
+                android:hint="请输入手机号码"
+                android:inputType="number"
+                android:textSize="14sp"
+                android:paddingLeft="15dp"
+                android:paddingBottom="22dp"
+                android:maxLength="11"
+                android:theme="@style/LoginEditText"
+                />
+            <TextView
+                android:id="@+id/bt_register_next"
+
+                android:layout_below="@id/fl_login"
+                android:layout_width="match_parent"
+                android:text="下一步"
+                android:gravity="center"
+                android:background="@drawable/bt_login_selector"
+                android:textColor="#000"
+                android:enabled="true"
+                android:textSize="15sp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:layout_marginTop="15dp"
+                android:layout_centerHorizontal="true"
+                android:layout_height="wrap_content"
+                />
+        </LinearLayout>
+    </LinearLayout>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</RelativeLayout>

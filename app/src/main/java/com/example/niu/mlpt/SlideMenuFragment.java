@@ -11,6 +11,8 @@ import android.view.ViewGroup;
 import android.widget.LinearLayout;
 
 import com.example.niu.mlpt.Utils.Api;
+import com.example.niu.mlpt.Utils.SharePreferenceUtils;
+import com.example.niu.mlpt.ui.LoginActivity;
 import com.example.niu.mlpt.ui.WebViewActivity;
 
 import butterknife.BindView;
@@ -77,6 +79,13 @@ public class SlideMenuFragment extends Fragment {
         //Toast.makeText(getContext(),"tedtttt",Toast.LENGTH_SHORT).show();
         //mActivityDrawer.closeDrawers();
         Intent intent ;
+
+        if (!(Boolean) SharePreferenceUtils.get("isLogin",false)){
+
+            Intent intent1 = new Intent(getActivity(), LoginActivity.class);
+            startActivity(intent1);
+            return;
+        }
         switch (view.getId()){
 
           case R.id.slide_mycoupon:

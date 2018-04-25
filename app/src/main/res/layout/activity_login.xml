@@ -8,7 +8,7 @@
     tools:context="com.example.niu.mlpt.ui.LoginActivity">
 
     <ImageView
-        android:id="@+id/login_close"
+        android:id="@+id/iv_login_close"
         android:layout_width="22dp"
         android:layout_height="22dp"
         android:layout_marginLeft="6dp"
@@ -17,7 +17,7 @@
 
 
     <ImageView
-        android:id="@+id/login_type"
+        android:id="@+id/iv_login_type"
         android:layout_width="72dp"
         android:layout_height="72dp"
         android:layout_centerHorizontal="true"
@@ -31,11 +31,11 @@
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
 
-        android:layout_below="@id/login_type"
+        android:layout_below="@id/iv_login_type"
         >
      <TextView
          android:layout_marginRight="25dp"
-         android:id="@+id/login_message"
+         android:id="@+id/tv_login_message"
          android:layout_width="wrap_content"
          android:layout_height="wrap_content"
          android:text="短信登录"
@@ -59,7 +59,7 @@
 <FrameLayout
     android:layout_below="@id/ll_login_type"
     android:layout_width="match_parent"
-    android:layout_marginTop="30dp"
+    android:layout_marginTop="20dp"
     android:layout_marginLeft="60dp"
     android:layout_marginRight="60dp"
     android:id="@+id/fl_login"
@@ -79,7 +79,8 @@
             android:layout_height="50dp"
             android:hint="请输入手机号码"
             android:inputType="number"
-            android:textSize="16sp"
+            android:textSize="14sp"
+            android:maxLength="11"
             android:paddingLeft="20dp"
             android:paddingBottom="23dp"
             android:theme="@style/LoginEditText"
@@ -94,38 +95,110 @@
             android:paddingRight="10dp"
             android:paddingLeft="20dp"
             android:paddingBottom="23dp"
-            android:textSize="16sp"
+            android:textSize="14sp"
             android:drawableRight="@drawable/account"
             android:inputType="textPassword"
             android:theme="@style/LoginEditText" />
+        <TextView
+            android:id="@+id/bt_login"
 
+            android:layout_below="@id/fl_login"
+            android:layout_width="match_parent"
+            android:text="登录"
+            android:gravity="center"
+            android:background="@drawable/bt_login_selector"
+            android:textColor="#fff"
+            android:enabled="false"
+            android:textSize="15sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="10dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            />
+
+        <RelativeLayout
+
+            android:layout_marginTop="10dp"
+            android:id="@+id/ll_register_remember"
+            android:layout_below="@id/bt_login"
+            android:layout_width="match_parent"
+            android:orientation="horizontal"
+
+            android:layout_height="wrap_content">
+
+            <TextView
+                android:id="@+id/tv_register"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="帐号注册"
+                android:textSize="12sp"
+                />
+
+            <TextView
+                android:id="@+id/tv_remember"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:text="忘记密码"
+                android:layout_alignParentRight="true"
+                android:textSize="12sp"
+                />
+
+        </RelativeLayout>
     </LinearLayout>
 
-    <EditText
+
+    <LinearLayout
         android:visibility="gone"
-        android:id="@+id/et_register_number"
+        android:id="@+id/ll_login_message"
         android:layout_width="match_parent"
-        android:layout_height="50dp"
-        android:hint="请输入注册手机号码"
-        android:inputType="number"
-        android:textSize="16sp"
-        android:paddingLeft="15dp"
-        android:paddingBottom="22dp"
-        android:theme="@style/LoginEditText"
-        />
+        android:orientation="vertical"
+        android:layout_height="wrap_content">
+
+        <EditText
+            android:visibility="visible"
+            android:id="@+id/et_register_number"
+            android:layout_width="match_parent"
+            android:layout_height="50dp"
+            android:hint="请输入注册手机号码"
+            android:inputType="number"
+            android:textSize="14sp"
+            android:paddingLeft="15dp"
+            android:paddingBottom="22dp"
+            android:maxLength="11"
+            android:theme="@style/LoginEditText"
+            />
+        <TextView
+            android:id="@+id/bt_login_next"
+
+            android:layout_below="@id/fl_login"
+            android:layout_width="match_parent"
+            android:text="下一步"
+            android:gravity="center"
+            android:background="@drawable/bt_login_selector"
+            android:textColor="#fff"
+            android:enabled="false"
+            android:textSize="15sp"
+            android:paddingTop="10dp"
+            android:paddingBottom="10dp"
+            android:layout_marginTop="15dp"
+            android:layout_centerHorizontal="true"
+            android:layout_height="wrap_content"
+            />
+    </LinearLayout>
+
 
 
 </FrameLayout>
 
 
-    <TextView
+   <!-- <TextView
         android:id="@+id/bt_login"
         android:layout_marginLeft="60dp"
         android:layout_marginRight="60dp"
         android:layout_below="@id/fl_login"
         android:layout_width="match_parent"
         android:text="登录"
-
         android:gravity="center"
         android:background="@drawable/bt_login_selector"
         android:textColor="#fff"
@@ -136,9 +209,10 @@
         android:layout_marginTop="15dp"
         android:layout_centerHorizontal="true"
         android:layout_height="wrap_content"
-        />
+        />-->
 
-   <RelativeLayout
+   <!--<RelativeLayout
+
        android:layout_marginTop="20dp"
        android:id="@+id/ll_register_remember"
        android:layout_below="@id/bt_login"
@@ -165,7 +239,7 @@
            android:textSize="14sp"
            />
 
-   </RelativeLayout>
+   </RelativeLayout>-->
 
 
     <LinearLayout
@@ -207,14 +281,16 @@
             android:layout_height="wrap_content">
 
             <ImageView
+                android:id="@+id/iv_qq"
                 android:layout_marginRight="30dp"
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:src="@drawable/finals_auth_qq"
                 />
             <ImageView
-                android:layout_width="75dp"
-                android:layout_height="75dp"
+                android:id="@+id/iv_weixin"
+                android:layout_width="64dp"
+                android:layout_height="64dp"
                 android:layout_marginLeft="20dp"
                 android:src="@drawable/finals_auth_weixin"
                 />

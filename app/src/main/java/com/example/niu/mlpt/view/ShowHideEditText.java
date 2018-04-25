@@ -8,9 +8,12 @@ import android.text.Editable;
 import android.text.InputType;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
 import android.widget.EditText;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by NIU on 2018/4/24.
@@ -67,10 +70,7 @@ public class ShowHideEditText extends EditText  implements View.OnFocusChangeLis
     @Override
     public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
-        if (isShow){
-            setInputType(InputType.TYPE_CLASS_TEXT);
-
-        }
+        Log.d(TAG, "onTextChanged1: chaesequence= "+charSequence.toString());
 
 
     }

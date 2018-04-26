@@ -1,0 +1,167 @@
+<?xml version="1.0" encoding="utf-8"?>
+
+
+<!--<RelativeLayout
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">-->
+
+<com.example.niu.mlpt.view.PaotuiScrollView
+    android:layout_marginTop="50dp"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context="com.example.niu.mlpt.Main2Activity">
+
+    <TextView
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+    <TextView
+        android:layout_marginTop="30dp"
+        android:text="1233434"
+        android:textSize="23sp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content" />
+
+</LinearLayout>
+</com.example.niu.mlpt.view.PaotuiScrollView>
+<!--
+</RelativeLayout>
+-->

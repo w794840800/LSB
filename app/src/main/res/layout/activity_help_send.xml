@@ -16,8 +16,10 @@
 
         <ImageView
             android:id="@+id/iv_back"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
+            android:layout_width="24dp"
+            android:layout_marginTop="10dp"
+            android:layout_marginLeft="10dp"
+            android:layout_height="24dp"
             android:src="@drawable/img_back"
             />
 
@@ -25,7 +27,7 @@
             android:text="帮我送"
             android:layout_centerInParent="true"
             android:textColor="#C3C3C3"
-            android:textSize="20sp"
+            android:textSize="15sp"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
         <TextView
@@ -35,7 +37,7 @@
             android:layout_alignParentRight="true"
             android:layout_marginRight="15dp"
             android:textColor="#000"
-            android:textSize="18sp"
+            android:textSize="15sp"
 
             android:layout_width="wrap_content"
             android:layout_height="wrap_content" />
@@ -43,7 +45,7 @@
 
 <LinearLayout
     android:id="@+id/send_items"
-    android:layout_marginTop="20dp"
+    android:layout_marginTop="10dp"
     app:layout_constraintTop_toBottomOf="@id/send_toolbar"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
@@ -62,9 +64,9 @@
 
       <ImageView
           android:src="@drawable/icon_file"
-          android:layout_width="48dp"
+          android:layout_width="36dp"
           android:layout_gravity="center"
-          android:layout_height="48dp" />
+          android:layout_height="36dp" />
         <TextView
             android:text="文件"
             android:layout_gravity="center"
@@ -81,9 +83,9 @@
 
         <ImageView
             android:src="@drawable/icon_file"
-            android:layout_width="48dp"
+            android:layout_width="36dp"
             android:layout_gravity="center"
-            android:layout_height="48dp" />
+            android:layout_height="36dp" />
         <TextView
             android:text="蛋糕"
             android:layout_gravity="center"
@@ -100,9 +102,9 @@
 
         <ImageView
             android:src="@drawable/icon_file"
-            android:layout_width="48dp"
+            android:layout_width="36dp"
             android:layout_gravity="center"
-            android:layout_height="48dp" />
+            android:layout_height="36dp" />
         <TextView
             android:text="鲜花"
             android:layout_gravity="center"
@@ -118,9 +120,9 @@
 
         <ImageView
             android:src="@drawable/icon_file"
-            android:layout_width="48dp"
+            android:layout_width="36dp"
             android:layout_gravity="center"
-            android:layout_height="48dp" />
+            android:layout_height="36dp" />
         <TextView
             android:text="钥匙"
             android:layout_gravity="center"
@@ -145,17 +147,21 @@
          <TextView
              android:text="发货电话"
              android:textColor="#000"
-             android:textSize="18sp"
+             android:textSize="16sp"
              android:layout_gravity="center"
              android:layout_marginLeft="20dp"
              android:layout_width="wrap_content"
              android:layout_height="wrap_content" />
 
-<com.example.niu.mlpt.view.ClearEditText
-    android:layout_gravity="center"
-    android:layout_width="match_parent"
-    android:layout_height="wrap_content"
-    android:drawableRight="@mipmap/close"
+        <com.example.niu.mlpt.view.ClearEditText
+            android:layout_marginLeft="10dp"
+            android:layout_width="match_parent"
+            android:paddingRight="10dp"
+            android:drawablePadding="20dp"
+            android:layout_height="wrap_content"
+            android:drawableRight="@drawable/close"
+            android:hint="tesr"
+            android:layout_marginRight="20dp"
     />
 
      </LinearLayout>

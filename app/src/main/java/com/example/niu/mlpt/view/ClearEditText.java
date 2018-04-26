@@ -5,92 +5,76 @@ import android.graphics.drawable.Drawable;
 import android.text.Editable;
 import android.text.TextWatcher;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.MotionEvent;
 import android.view.View;
+import android.widget.EditText;
+import android.widget.Toast;
+
+import com.example.niu.mlpt.R;
+import com.example.niu.mlpt.Utils.ToastUtils;
+
+import static android.content.ContentValues.TAG;
 
 /**
  * Created by NIU on 2018/4/23.
  */
 
-public class ClearEditText extends android.support.v7.widget.AppCompatEditText
+public class ClearEditText extends EditText
         implements View.OnFocusChangeListener,TextWatcher{
 
-     private Drawable mCleanDrawble;
-     private boolean mHasFoucus;
+    Drawable drawable = getResources().getDrawable(R.drawable.close);
+
     public ClearEditText(Context context) {
         super(context);
     }
 
     public ClearEditText(Context context, AttributeSet attrs) {
         super(context, attrs);
-        init();
     }
 
-    private void init() {
-
-        setOnFocusChangeListener(this);
-        addTextChangedListener(this);
-     setClearEditIconVisibity(false);
+    public ClearEditText(Context context, AttributeSet attrs, int defStyleAttr) {
+        super(context, attrs, defStyleAttr);
     }
 
     @Override
-    public boolean onTouchEvent(MotionEvent event) {
+    public void beforeTextChanged(CharSequence s, int start, int count, int after) {
 
-         if (event.getAction()==MotionEvent.ACTION_UP){
-
-             if (getCompoundDrawables()[2]!=null){
-                  //左边界
-                 int left = getWidth()-getTotalPaddingRight();
-                 int right = getWidth()-getPaddingRight();
-                 if (event.getX()>left&&event.getX()<right){
-                     setText("");
-
-                 }
-
-
-
-             }
-
-
-
-         }
-
-
-        return super.onTouchEvent(event);
     }
 
     @Override
-    public void onFocusChange(View view, boolean b) {
+    public void onTextChanged(CharSequence s, int start, int before, int count) {
 
-        if (b &&getText().length()>0){
+        setClearEditTextVisibity(s.toString().length()>0);
+    }
 
-  setClearEditIconVisibity(true);
+    private void setClearEditTextVisibity(boolean b) {
 
+        Log.d("wanglei", "setClearEditTextVisibity: b= "+b);
+
+        if (b){
+            drawable = getResources().getDrawable(R.drawable.close);
+            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+
+            setCompoundDrawables(null,drawable,drawable,null);
+           //invalidate();
+           // requestLayout();
         }else{
-            setClearEditIconVisibity(false);
+
+         //   drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), (int) (drawable.getMinimumHeight()));
+            setCompoundDrawables(null,null,null,null);
 
         }
-    }
-
-    @Override
-    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
 
     }
 
     @Override
-    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
-        setClearEditIconVisibity(getText().length()>0);
+    public void afterTextChanged(Editable s) {
+
     }
 
     @Override
-    public void afterTextChanged(Editable editable) {
+    public void onFocusChange(View v, boolean hasFocus) {
 
     }
-
-    public void setClearEditIconVisibity(boolean b){
-        Drawable drawable  = b ? mCleanDrawble:null;
-        setCompoundDrawables(getCompoundDrawables()[0],getCompoundDrawables()[1],drawable,getCompoundDrawables()[2]);
-
-    }
-
 }

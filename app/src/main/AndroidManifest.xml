@@ -47,7 +47,7 @@
     <application
         android:name=".BaseApplication"
         android:allowBackup="true"
-        android:icon="@mipmap/laucher"
+        android:icon="@mipmap/ic_laucher2"
         android:label="@string/app_name"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
@@ -56,6 +56,16 @@
             android:value="4d29b8eac84a4e466a5d10eada615513" />
 
         <activity android:name=".ui.MainActivity">
+            <!--<intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>-->
+        </activity>
+
+        <service android:name="com.amap.api.location.APSService" />
+
+        <activity android:name=".ui.HelpSendActivity" >
 
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -63,10 +73,6 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-
-        <service android:name="com.amap.api.location.APSService" />
-
-        <activity android:name=".ui.HelpSendActivity" />
         <activity android:name=".ui.WebViewActivity" />
         <activity android:name=".ui.LoginActivity">
 
@@ -89,13 +95,37 @@
             -->
         </activity>
         <activity android:name=".ui.RegisterAvtivity">
-            <!--<intent-filter>
+
+            <!--
+            <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
-            </intent-filter>-->
+            </intent-filter>
+            -->
         </activity>
         <activity android:name=".ui.RememberActivity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".Main2Activity">
+
+            <!--
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+            -->
+        </activity>
+        <activity android:name=".ui.SplashActivity">
+
             <!--<intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

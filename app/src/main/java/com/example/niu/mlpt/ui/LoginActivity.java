@@ -155,8 +155,8 @@ public class LoginActivity extends AppCompatActivity {
 
     }
 
-    @OnClick({R.id.tv_remember,R.id.tv_login_pwd, R.id.tv_login_message, R.id.bt_login,R.id.iv_qq,R.id.iv_weixin,R.id.tv_register
-
+    @OnClick({R.id.tv_remember,R.id.tv_login_pwd, R.id.tv_login_message, R.id.bt_login,R.id.iv_qq,R.id.iv_weixin,R.id.tv_register,
+R.id.bt_login_next
     ,R.id.iv_login_close
     })
     public void onViewClicked(View view) {
@@ -177,6 +177,12 @@ public class LoginActivity extends AppCompatActivity {
                 llLoginPwd.setVisibility(View.GONE);
                 break;
 
+
+            case R.id.bt_login_next:
+
+                Intent intent1 = new Intent(this,VerificationCodeActivity.class);
+                startActivity(intent1);
+                break;
             case R.id.tv_login_pwd:
 
                 tvLoginPwd.setTextSize(TypedValue.COMPLEX_UNIT_SP, 20);

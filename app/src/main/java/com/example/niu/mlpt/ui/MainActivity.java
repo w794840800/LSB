@@ -6,6 +6,7 @@ import android.animation.AnimatorListenerAdapter;
 import android.animation.AnimatorSet;
 import android.animation.ObjectAnimator;
 import android.content.Context;
+import android.content.Intent;
 import android.content.pm.PackageInfo;
 import android.content.pm.PackageManager;
 import android.database.Cursor;
@@ -283,9 +284,17 @@ public class MainActivity extends AppCompatActivity {
 
         }  if (ContextCompat.checkSelfPermission(this, Manifest.permission.WRITE_EXTERNAL_STORAGE)!=PackageManager.PERMISSION_GRANTED){
 
-            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION},1);
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.WRITE_EXTERNAL_STORAGE,Manifest.permission.ACCESS_FINE_LOCATION},2);
+
+        }if (ContextCompat.checkSelfPermission(this, Manifest.permission.READ_CONTACTS)!=PackageManager.PERMISSION_GRANTED){
+
+            ActivityCompat.requestPermissions(this,new String[]{Manifest.permission.READ_CONTACTS},3);
 
         }
+
+
+
+
         /*main_account.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -496,6 +505,11 @@ public class MainActivity extends AppCompatActivity {
     public void onHelpClicked(View view){
         //bitmapArrayList.clear();
         //images.clear();
+
+        Intent intent = new Intent(this,HelpSendActivity.class);
+        startActivity(intent);
+
+
 
        /* Matisse.from(MainActivity.this)
                 .choose(MimeType.allOf())

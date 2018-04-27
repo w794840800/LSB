@@ -23,7 +23,7 @@ import static android.content.ContentValues.TAG;
 public class ClearEditText extends EditText
         implements View.OnFocusChangeListener,TextWatcher{
 
-    Drawable drawable = getResources().getDrawable(R.drawable.close);
+    Drawable drawable = getResources().getDrawable(R.drawable.clear);
 
     public ClearEditText(Context context) {
         super(context);
@@ -35,6 +35,26 @@ public class ClearEditText extends EditText
 
     public ClearEditText(Context context, AttributeSet attrs, int defStyleAttr) {
         super(context, attrs, defStyleAttr);
+    }
+
+    @Override
+    public boolean onTouchEvent(MotionEvent event) {
+
+        if (event.getAction()==MotionEvent.ACTION_UP){
+
+            Log.d(TAG, "onTouchEvent: getRight= "+getRight()+" getWidth= "+getWidth()+" getLeft= "+getLeft()+" getX= "+event.getX());
+            int drawableLeft = getWidth()-getTotalPaddingRight();
+                    //getWidth()-getTotalPaddingRight();
+            int drawableRight = getWidth()-getPaddingRight();
+            if (event.getX()>drawableLeft&&event.getX()<drawableRight){
+
+                setText("");
+
+            }
+
+        }
+
+        return super.onTouchEvent(event);
     }
 
     @Override
@@ -53,16 +73,19 @@ public class ClearEditText extends EditText
         Log.d("wanglei", "setClearEditTextVisibity: b= "+b);
 
         if (b){
-            drawable = getResources().getDrawable(R.drawable.close);
-            drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+            if (drawable==null) {
+                drawable = getResources().getDrawable(R.drawable.clear);
 
-            setCompoundDrawables(null,drawable,drawable,null);
+
+            }drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), drawable.getIntrinsicHeight());
+
+            setCompoundDrawables(getCompoundDrawables()[0],getCompoundDrawables()[1],drawable,getCompoundDrawables()[3]);
            //invalidate();
            // requestLayout();
         }else{
 
          //   drawable.setBounds(0, 0, drawable.getIntrinsicWidth(), (int) (drawable.getMinimumHeight()));
-            setCompoundDrawables(null,null,null,null);
+            setCompoundDrawables(getCompoundDrawables()[0],getCompoundDrawables()[1],null,getCompoundDrawables()[3]);
 
         }
 
@@ -77,4 +100,11 @@ public class ClearEditText extends EditText
     public void onFocusChange(View v, boolean hasFocus) {
 
     }
+
+    @Override
+    protected void onFinishInflate() {
+        super.onFinishInflate();
+    drawable  = getCompoundDrawables()[2];
+    }
+
 }
